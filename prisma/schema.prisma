@@ -12,3 +12,28 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model User {
+user_id String @id @default(cuid())
+name  String 
+password String 
+Email String @unique
+address  Address?
+isActive Boolean @default(true)
+createAt DateTime @default(now())
+updateAt DateTime @updatedAt()
+}
+
+model Address{
+  address_id String @id @default(cuid())
+  door_no String 
+  area String 
+  street String 
+  state String 
+  user User @relation(fields: [userId],references:[user_id])
+  userId String @unique
+  isActive Boolean @default(true)
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
