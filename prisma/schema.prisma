@@ -17,9 +17,25 @@ datasource db {
 model User {
 user_id String @id @default(cuid())
 name  String 
-password String 
+password String?
 Email String @unique
 address  Address?
+role Role? @relation(fields: [roleId],references:[role_id])
+roleId String
+channel Channel[]
+order  Order[]
+isActive Boolean @default(true)
+createAt DateTime @default(now())
+updateAt DateTime @updatedAt()
+}
+
+model Operater {
+operater_id String @id @default(cuid())
+name  String 
+password String 
+Email String @unique
+role Role? @relation(fields: [roleId],references:[role_id])
+roleId String
 isActive Boolean @default(true)
 createAt DateTime @default(now())
 updateAt DateTime @updatedAt()
@@ -31,9 +47,74 @@ model Address{
   area String 
   street String 
   state String 
+  aadher_card String?
   user User @relation(fields: [userId],references:[user_id])
   userId String @unique
+  attachemant Attachemant?
   isActive Boolean @default(true)
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
+}
+
+model Role{
+  role_id String @id @default(cuid())
+  role_name String @unique
+  user  User[]
+  permission Permission[]
+  operater Operater[]
+  isActive Boolean @default(true)
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model Permission{
+   identifier  String   @id @unique
+  description String?
+  roles       Role[]
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
+
+model Channel {
+  channel_id String @id @default(cuid())
+  name String 
+  amount String
+  user User[]
+  order Order[]
+  isActive Boolean @default(true)
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt()
+}
+
+model Order{
+  order_id String @id @default(cuid())
+  payed_amounts String?
+  razorpayer_order_id String ?
+  razorpay_payment_id String? 
+  status OrderStatus @default(PENDING)
+  userID String 
+  user User @relation(fields: [userID],references:[user_id])
+ // channelID String
+  channel Channel[]
+  isActive Boolean @default(true)
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt()
+}
+
+model Attachemant{
+  attachemant_id String @id @default(cuid())
+  url   String
+  mime String 
+  address Address @relation(fields: [addressId],references: [address_id])
+  addressId String @unique
+  isActive Boolean @default(true)
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt()
+}
+
+
+enum OrderStatus{
+   PENDING
+  SUCCESS
+  FAILED
 }

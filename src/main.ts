@@ -9,6 +9,7 @@ async function bootstrap() {
     .setDescription('API for Cable Channel Payment System')
     .setVersion('1.0')
     .addTag('cable')
+    .addBearerAuth() 
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
