@@ -23,5 +23,5 @@ import { ChannelModule } from './channel/channel.module';
   ],
   controllers: [AppController],
   providers: [AppService],
-})
+}) 
 export class AppModule {}
