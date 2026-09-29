@@ -6,7 +6,7 @@ import { permission } from "process";
 import { Roles_Enum } from "src/util";
 
 @Injectable()
-export class JWTStrategy extends PassportStrategy(Strategy,"jwt"){
+export class JWTStrategy extends PassportStrategy(Strategy){
 constructor(private prisma:PrismaService){
     super({
         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
