@@ -7,5 +7,6 @@ import { RazorpayService } from 'src/razorpay/razorpay.service';
 @Module({
   controllers: [OrderController],
   providers: [OrderService,PrismaService,RazorpayService],
+  exports:[OrderService]
 })
 export class OrderModule {}

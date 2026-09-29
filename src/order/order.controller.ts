@@ -1,13 +1,15 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { OrderService } from './order.service';
-import { CreateOrderDto } from './dto/create-order.dto';
+import { CreateOrderDto, VerifyPaymentDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { CurrentUser } from 'src/decorator/currentUser';
 import { UserDto } from 'src/auth/dto/create-auth.dto';
-import { ApiBearerAuth, ApiBody, ApiHeader } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiHeader, ApiOperation, ApiProperty } from '@nestjs/swagger';
 import { ApiAuthGuard } from 'src/auth/jwt_guard';
 import { PermissionGuard } from 'src/auth/permission.guard';
 import { Roles_Enum } from 'src/util/common.enum';
+import { Permission } from 'src/util';
+import { Permisssions } from 'src/decorator';
 
 @Controller('order')
 export class OrderController {
@@ -16,14 +18,30 @@ export class OrderController {
   @UseGuards(ApiAuthGuard,PermissionGuard)
   @ApiBearerAuth()
   @ApiHeader({name:'role',enum:[Roles_Enum.ROLE_USER]})
+  @Permisssions(Permission.USER_PERMISSION)
   @Post()
   @ApiBody({type:CreateOrderDto})
   async createOrders(@Body('channelId') channelId:string[], @CurrentUser() user:UserDto) {
     return this.orderService.create(channelId,user);
   }
-
-  @Get()
-  findAll() {
+@ApiOperation({ summary: "verify razorpay payment" })
+@UseGuards(ApiAuthGuard, PermissionGuard)
+@ApiBearerAuth()
+@ApiHeader({ name: 'role', enum: [Roles_Enum.ROLE_USER,Roles_Enum.ROLE_OPERATER] })
+@Permisssions(Permission.USER_PERMISSION)
+@Post('verify')
+@ApiBody({ type: VerifyPaymentDto })
+async verifyPayment(@Body() dto: VerifyPaymentDto, @CurrentUser() user: UserDto) {
+  return this.orderService.verifyPayment(dto, user);
+}
+  
+  @ApiOperation({summary:"get all orders"})
+  @UseGuards(ApiAuthGuard,PermissionGuard)
+  @ApiBearerAuth()
+  @ApiHeader({name:'role',enum:[Roles_Enum.ROLE_USER,Roles_Enum.ROLE_OPERATER]})
+  @Permisssions(Permission.USER_PERMISSION,Permission.OPERATER_PERMISSION)
+  @Get('AllOders')
+  async findAll() {
     return this.orderService.findAll();
   }
 

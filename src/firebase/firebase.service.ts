@@ -1,15 +1,22 @@
-import { Injectable } from '@nestjs/common';
-import * as admin from 'firebase-admin';
+// import { Injectable } from '@nestjs/common';
+// import * as admin from 'firebase-admin';
+// import { ServiceAccount } from 'firebase-admin';
+// import * as serviceAccount from '../auth/fcm.json';
 
-@Injectable()
-export class FirebaseService {
-  private adminApp: admin.app.App;
+// @Injectable()
+// export class FirebaseService {
+  
 
-  constructor() {
-    this.adminApp = admin.app();
-  }
-  async verifyToken(token:string){
-    const decodedToken=await admin.auth().verifyIdToken(token)
-    return decodedToken;
-  }
-}
+//   constructor() {
+//       if (admin.apps.length === 0) {
+//       admin.initializeApp({
+//         credential: admin.credential.cert(serviceAccount as ServiceAccount),
+//       });
+//     }
+//   }
+//   async verifyToken(token:string){
+//     const decodedToken=await admin.auth().verifyIdToken(token)
+//     return decodedToken;
+//   }
+// }
+
