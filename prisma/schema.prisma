@@ -24,6 +24,8 @@ role Role? @relation(fields: [roleId],references:[role_id])
 roleId String
 channel Channel[]
 order  Order[]
+chatmessage ChatMessage[]
+attachemant Attachemant[]
 isActive Boolean @default(true)
 createAt DateTime @default(now())
 updateAt DateTime @updatedAt()
@@ -47,10 +49,13 @@ model Address{
   area String 
   street String 
   state String 
-  aadher_card String?
+  aadhar_card Attachemant[]
+  // aadher_card_front_id String @unique
+  // aadher_card_back_id String @unique
+  // aadher_card_front Attachemant? @relation(name:"aadher_card_front", fields: [aadher_card_front_id],references: [attachemant_id])
+  // addher_card_back Attachemant? @relation(name:"addher_card_back", fields:[aadher_card_back_id],references: [attachemant_id])
   user User @relation(fields: [userId],references:[user_id])
   userId String @unique
-  attachemant Attachemant?
   isActive Boolean @default(true)
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
@@ -77,8 +82,9 @@ model Permission{
 
 model Channel {
   channel_id String @id @default(cuid())
-  name String 
+  name String @unique
   amount String
+  logo_path String?
   user User[]
   order Order[]
   isActive Boolean @default(true)
@@ -105,11 +111,37 @@ model Attachemant{
   attachemant_id String @id @default(cuid())
   url   String
   mime String 
-  address Address @relation(fields: [addressId],references: [address_id])
-  addressId String @unique
+  address_ID String
+  address Address @relation(fields:[address_ID],references:[address_id])
+  // front_aadhar Address? @relation(name:"aadher_card_front")
+  // back_addher  Address? @relation(name:"addher_card_back")
+  create_by User? @relation(fields: [create_user_id],references: [user_id])
+  create_user_id String?
   isActive Boolean @default(true)
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt()
+}
+
+
+model ChatMessage{
+  chat_id String @id @default(cuid())
+ // role AIROLE
+ role String
+  content String 
+  user User @relation(fields:[userID],references: [user_id])
+  userID String 
+  isActive  Boolean  @default(true)
+  createAt  DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
+
+model FaqChunk {
+  id        String   @id @default(cuid())
+  content   String
+  embedding Float[]
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+   updateAt  DateTime @updatedAt
 }
 
 
@@ -117,4 +149,9 @@ enum OrderStatus{
    PENDING
   SUCCESS
   FAILED
+}
+
+enum AIROLE{
+  user
+  assistant
 }
