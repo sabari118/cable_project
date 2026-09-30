@@ -2,12 +2,12 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, UseInterc
 import { AddressService } from './address.service';
 import { CreateAddressDto } from './dto/create-address.dto';
 import { UpdateAddressDto } from './dto/update-address.dto';
-import { ApiAuthGuard } from 'src/auth/jwt_guard';
-import { PermissionGuard } from 'src/auth/permission.guard';
+import { ApiAuthGuard } from '../auth/jwt_guard';
+import { PermissionGuard } from '../auth/permission.guard';
 import { ApiBearerAuth, ApiBody, ApiHeader } from '@nestjs/swagger';
-import { Permission, Roles_Enum } from 'src/util';
-import { CurrentUser, Permisssions } from 'src/decorator';
-import { UserDto } from 'src/auth/dto/create-auth.dto';
+import { Permission, Roles_Enum } from '../util';
+import { CurrentUser, Permisssions } from '../decorator';
+import { UserDto } from '../auth/dto/create-auth.dto';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
 
 @Controller('address')

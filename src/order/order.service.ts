@@ -2,8 +2,8 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateOrderDto, VerifyPaymentDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { PrismaService } from '../../prisma/prisma.service';
-import { UserDto } from 'src/auth/dto/create-auth.dto';
-import { RazorpayService } from 'src/razorpay/razorpay.service';
+import { UserDto } from '../auth/dto/create-auth.dto';
+import { RazorpayService } from '../razorpay/razorpay.service';
 import * as crypto from 'crypto';
 
 @Injectable()

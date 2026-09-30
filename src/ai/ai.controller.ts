@@ -1,12 +1,12 @@
 import { Body, Controller, Post, Query, Res, Sse, UseGuards } from "@nestjs/common";
 import { ApiBearerAuth, ApiBody, ApiHeader, ApiOperation, ApiTags } from "@nestjs/swagger";
 import { AiService } from "./ai.service";
-import { ApiAuthGuard } from "src/auth/jwt_guard";
-import { CurrentUser, Permisssions } from "src/decorator";
+import { ApiAuthGuard } from "../auth/jwt_guard";
+import { CurrentUser, Permisssions } from "../decorator";
 import { User } from "@prisma/client";
-import { UserDto } from "src/auth/dto/create-auth.dto";
-import { PermissionGuard } from "src/auth/permission.guard";
-import { Permission, Roles_Enum } from "src/util";
+import { UserDto } from "../auth/dto/create-auth.dto";
+import { PermissionGuard } from "../auth/permission.guard";
+import { Permission, Roles_Enum } from "../util";
 import { Observable } from "rxjs";
 import express from "express";
 

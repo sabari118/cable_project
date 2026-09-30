@@ -1,5 +1,5 @@
 import { BadRequestException, CallHandler, ExecutionContext, Inject, mixin, NestInterceptor } from "@nestjs/common";
-import { AwsService } from "src/aws/aws.service";
+import { AwsService } from "../../aws/aws.service";
 import { _FileType } from "../common.interceptor";
 import { Files } from "@anthropic-ai/sdk/resources/beta.js";
 import { BadRequestError } from "@anthropic-ai/sdk";

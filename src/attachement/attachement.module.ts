@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AttachementService } from './attachement.service';
 import { AttachementController } from './attachement.controller';
 import { PrismaService } from '../../prisma/prisma.service';
-import { AwsService } from 'src/aws/aws.service';
+import { AwsService } from '../aws/aws.service';
 
 @Module({
   controllers: [AttachementController],
