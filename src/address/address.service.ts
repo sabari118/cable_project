@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateAddressDto } from './dto/create-address.dto';
 import { UpdateAddressDto } from './dto/update-address.dto';
 import { PrismaService } from '../../prisma/prisma.service';
-import { UserDto } from 'src/auth/dto/create-auth.dto';
+import { UserDto } from '../auth/dto/create-auth.dto';
 
 @Injectable()
 export class AddressService {

@@ -2,14 +2,14 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@n
 import { OrderService } from './order.service';
 import { CreateOrderDto, VerifyPaymentDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
-import { CurrentUser } from 'src/decorator/currentUser';
-import { UserDto } from 'src/auth/dto/create-auth.dto';
+import { CurrentUser } from '../decorator/currentUser';
+import { UserDto } from '../auth/dto/create-auth.dto';
 import { ApiBearerAuth, ApiBody, ApiHeader, ApiOperation, ApiProperty } from '@nestjs/swagger';
-import { ApiAuthGuard } from 'src/auth/jwt_guard';
-import { PermissionGuard } from 'src/auth/permission.guard';
-import { Roles_Enum } from 'src/util/common.enum';
+import { ApiAuthGuard } from '../auth/jwt_guard';
+import { PermissionGuard } from '../auth/permission.guard';
+import { Roles_Enum } from '../util/common.enum';
 import { Permission } from '../util';
-import { Permisssions } from 'src/decorator';
+import { Permisssions } from '../decorator';
 
 @Controller('order')
 export class OrderController {

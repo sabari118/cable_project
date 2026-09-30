@@ -1,6 +1,6 @@
 // import { Injectable } from "@nestjs/common";
 // import { AuthGuard } from "@nestjs/passport";
-// import { FirebaseService } from "src/firebase/firebase.service";
+// import { FirebaseService } from "../firebase/firebase.service";
 // import { AuthService } from "./auth.service";
 
 // @Injectable()

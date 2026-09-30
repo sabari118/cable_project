@@ -1,10 +1,10 @@
 import {Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import Groq from 'groq-sdk';
-import { EmbeddingService } from 'src/embedding/embedding.service';
-import { ToolsExecutorService } from 'src/tool/toolexecutor';
-import { buildSystemPrompt } from 'src/prompts/system.prompt';
-import { buildAiTool } from 'src/tool/toolSDK';
+import { EmbeddingService } from '../embedding/embedding.service';
+import { ToolsExecutorService } from '../tool/toolexecutor';
+import { buildSystemPrompt } from '../prompts/system.prompt';
+import { buildAiTool } from '../tool/toolSDK';
 import { stepCountIs } from 'ai';
 
 

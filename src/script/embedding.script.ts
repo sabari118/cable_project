@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
-import { EmbeddingService } from 'src/embedding/embedding.service';
+import { EmbeddingService } from '../embedding/embedding.service';
 import { PrismaService } from '../../prisma/prisma.service';
-import { AppModule } from 'src/app.module';
+import { AppModule } from '../app.module';
 
 const faqChunks = [
   'Subscription pricing: SPORTS is ₹100, MOVIES is ₹150, KIDS is ₹80, NEWS is ₹50, MUSIC is ₹70.',

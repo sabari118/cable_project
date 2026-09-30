@@ -5,10 +5,10 @@ import { UpdateAuthDto } from './dto/update-auth.dto';
 import { ApiAuthGuard } from './jwt_guard';
 import { ApiBearerAuth, ApiHeader, ApiOperation, ApiProperty } from '@nestjs/swagger';
 import { permission } from 'process';
-import { CurrentUser, Permisssions } from 'src/decorator';
-import { Permission} from 'src/util/permission.common';
+import { CurrentUser, Permisssions } from '../decorator';
+import { Permission} from '../util/permission.common';
 import { PermissionGuard } from './permission.guard';
-import { Roles_Enum } from 'src/util/common.enum';
+import { Roles_Enum } from '../util/common.enum';
 
 @Controller('auth')
 export class AuthController {

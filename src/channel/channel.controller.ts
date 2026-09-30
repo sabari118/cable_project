@@ -3,11 +3,11 @@ import { ChannelService } from './channel.service';
 import { CreateChannelDto } from './dto/create-channel.dto';
 import { UpdateChannelDto } from './dto/update-channel.dto';
 import { ApiBearerAuth, ApiHeader, ApiOperation } from '@nestjs/swagger';
-import { ApiAuthGuard } from 'src/auth/jwt_guard';
-import { PermissionGuard } from 'src/auth/permission.guard';
-import { Permisssions } from 'src/decorator/permission.decorator';
-import { Permission } from 'src/util/permission.common';
-import { Roles_Enum } from 'src/util/common.enum';
+import { ApiAuthGuard } from '../auth/jwt_guard';
+import { PermissionGuard } from '../auth/permission.guard';
+import { Permisssions } from '../decorator/permission.decorator';
+import { Permission } from '../util/permission.common';
+import { Roles_Enum } from '../util/common.enum';
 
 @Controller('channel')
 export class ChannelController {
