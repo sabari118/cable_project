@@ -23,7 +23,8 @@
     "load/role": "ts-node ./src/script/roles.script.ts",
     "load/permission": "ts-node ./src/script/permissionScript.ts",
     "load/embedding": "ts-node -r tsconfig-paths/register ./src/script/embedding.script.ts",
-    "load/search": "ts-node -r tsconfig-paths/register ./src/script/searchtestScript.ts"
+    "load/search": "ts-node -r tsconfig-paths/register ./src/script/searchtestScript.ts",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@ai-sdk/groq": "^4.0.37",
