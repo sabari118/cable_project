@@ -4,7 +4,7 @@ import { UpdateAuthDto } from './dto/update-auth.dto';
 import { PrismaService } from '../../prisma/prisma.service';
 import { Roles_Enum } from 'src/util/common.enum';
 import { CONFIG_CONST } from '../util/config.const';
-import { JWTWARPPEDSERVICE } from 'src/jwt-warpper/jwt-warpped.service';
+import { JWTWARPPEDSERVICE } from '../jwt-warpper/jwt-warpped.service';
 
 @Injectable()
 export class AuthService {
