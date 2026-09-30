@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { LogInDto, operaterDto, syncOperatorDto, syncUserDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
-import { PrismaService } from 'prisma/prisma.service';
+import { PrismaService } from '../../prisma/prisma.service';
 import { Roles_Enum } from 'src/util/common.enum';
 import { CONFIG_CONST } from 'src/util/config.const';
 import { JWTWARPPEDSERVICE } from 'src/jwt-warpper/jwt-warpped.service';
