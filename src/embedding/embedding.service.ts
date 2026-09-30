@@ -1,5 +1,6 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
+import { env } from '@xenova/transformers';
 
 @Injectable()
 export class EmbeddingService implements OnModuleInit {
@@ -7,6 +8,8 @@ export class EmbeddingService implements OnModuleInit {
 
   async onModuleInit() {
     const { pipeline } = await import('@xenova/transformers');
+    env.cacheDir = '/tmp/.cache';
+  env.allowLocalModels = false;
     this.extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
   }
 
