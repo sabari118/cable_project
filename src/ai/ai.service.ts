@@ -1,5 +1,5 @@
 import {Injectable } from '@nestjs/common';
-import { PrismaService } from 'prisma/prisma.service';
+import { PrismaService } from '../../prisma/prisma.service';
 import Groq from 'groq-sdk';
 import { EmbeddingService } from 'src/embedding/embedding.service';
 import { ToolsExecutorService } from 'src/tool/toolexecutor';

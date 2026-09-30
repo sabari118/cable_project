@@ -3,7 +3,7 @@ import { CreateAttachementDto } from './dto/create-attachement.dto';
 import { UpdateAttachementDto } from './dto/update-attachement.dto';
 import { _FileType } from 'src/util/common.interceptor';
 import { User } from 'src/auth/dto/create-auth.dto';
-import { PrismaService } from 'prisma/prisma.service';
+import { PrismaService } from '../../prisma/prisma.service';
 import { Attachement } from './entities/attachement.entity';
 import { AwsService } from 'src/aws/aws.service';
 

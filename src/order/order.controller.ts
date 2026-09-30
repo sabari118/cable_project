@@ -8,7 +8,7 @@ import { ApiBearerAuth, ApiBody, ApiHeader, ApiOperation, ApiProperty } from '@n
 import { ApiAuthGuard } from 'src/auth/jwt_guard';
 import { PermissionGuard } from 'src/auth/permission.guard';
 import { Roles_Enum } from 'src/util/common.enum';
-import { Permission } from 'src/util';
+import { Permission } from '../util';
 import { Permisssions } from 'src/decorator';
 
 @Controller('order')

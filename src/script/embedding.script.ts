@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { EmbeddingService } from 'src/embedding/embedding.service';
-import { PrismaService } from 'prisma/prisma.service';
+import { PrismaService } from '../../prisma/prisma.service';
 import { AppModule } from 'src/app.module';
 
 const faqChunks = [
