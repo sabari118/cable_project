@@ -1,4 +1,9 @@
 {
   "regions": ["sin1"],
-  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "node_modules/{@xenova,@huggingface,onnxruntime-node,onnxruntime-common,onnxruntime-web,sharp}/**"
+    }
+  },
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }]
 }
