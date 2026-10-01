@@ -2,7 +2,7 @@
   "regions": ["sin1"],
   "functions": {
     "api/index.ts": {
-      "includeFiles": "node_modules/{@xenova,@huggingface,onnxruntime-node,onnxruntime-common,onnxruntime-web,sharp}/**"
+      "includeFiles":  "node_modules/**"
     }
   },
   "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }]
