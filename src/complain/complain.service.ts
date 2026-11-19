@@ -1,9 +1,8 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateComplainDto, UpdateFeedback } from './dto/create-complain.dto';
 import { UpdateComplainDto } from './dto/update-complain.dto';
-import { UserDto } from 'src/auth/dto/create-auth.dto';
-import { PrismaService } from 'prisma/prisma.service';
-import { ExceptionsHandler } from '@nestjs/core/exceptions/exceptions-handler';
+import { UserDto } from '../auth/dto/create-auth.dto';
+import { PrismaService } from '../../prisma/prisma.service';
 import { ComplainStatus } from '@prisma/client';
 
 @Injectable()
