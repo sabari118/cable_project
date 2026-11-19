@@ -3,11 +3,11 @@ import { ComplainService } from './complain.service';
 import { CreateComplainDto, UpdateFeedback } from './dto/create-complain.dto';
 import { UpdateComplainDto } from './dto/update-complain.dto';
 import { ApiBearerAuth, ApiOperation,ApiHeader, ApiProperty } from '@nestjs/swagger';
-import { PermissionGuard } from 'src/auth/permission.guard';
-import { ApiAuthGuard } from 'src/auth/jwt_guard';
-import { CurrentUser, Permisssions } from 'src/decorator';
-import { Permission, Roles_Enum } from 'src/util';
-import { UserDto } from 'src/auth/dto/create-auth.dto';
+import { PermissionGuard } from '../auth/permission.guard';
+import { ApiAuthGuard } from '../auth/jwt_guard';
+import { CurrentUser, Permisssions } from '../decorator';
+import { Permission, Roles_Enum } from '../util';
+import { UserDto } from '../auth/dto/create-auth.dto';
 
 @Controller('complain')
 export class ComplainController {
