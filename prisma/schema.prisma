@@ -11,7 +11,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+ // directUrl = env("DIRECT_URL")
 }
 
 
@@ -27,6 +27,7 @@ channel Channel[]
 order  Order[]
 chatmessage ChatMessage[]
 attachemant Attachemant[]
+Complain Complain[]
 isActive Boolean @default(true)
 createAt DateTime @default(now())
 updateAt DateTime @updatedAt()
@@ -145,11 +146,29 @@ model FaqChunk {
    updateAt  DateTime @updatedAt
 }
 
+model Complain{
+  complain_id String @id @default(cuid())
+  complains String
+  status ComplainStatus @default(PENDING) 
+  feedback String?
+  user       User?  @relation(fields: [UserID],references: [user_id])
+  UserID String
+  isActive Boolean @default(true)
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
 
 enum OrderStatus{
    PENDING
   SUCCESS
   FAILED
+}
+
+enum ComplainStatus{
+  PENDING
+  PERMANENTSOLUTION
+  COMPLETED
 }
 
 enum AIROLE{

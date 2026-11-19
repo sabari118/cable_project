@@ -114,10 +114,10 @@ export class AuthService {
   }
 
   const payload = {
-    user_id: find_me.operater_id
+    operater_id: find_me.operater_id
   };
 
-  const secret_token = process.env.JWT_SECRETUSER || "";
+  const secret_token = process.env.JWT_SECRETOPERATER || "";
 
   const ACCESS_TOKEN = this.jwt.createToken(
     payload,
@@ -137,5 +137,16 @@ export class AuthService {
     refresh_token: REFRESH_TOKEN,
     role:'operater'
   };
+}
+
+async findOperaterHomepage(operater_id:string){
+  
+  const findOperater = await this.prisma.operater.findFirst({where:{operater_id:operater_id},select:{Email:true,name:true}})
+
+  if(!findOperater){
+    throw new BadRequestException("operator not found")
+  }
+
+  return{findOperater,message:'operater fetched successfully'}
 }
 }

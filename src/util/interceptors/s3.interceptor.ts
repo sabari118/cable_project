@@ -10,7 +10,7 @@ export function  S3Interceptor(model:string){
 async intercept(context: ExecutionContext, next: CallHandler) {
   const req = context.switchToHttp().getRequest();
 
-  // Multiple files
+ 
   if (req.files && req.files.length > 0) {
     const result: _FileType[] = [];
     for (let file of req.files) {
@@ -26,7 +26,7 @@ async intercept(context: ExecutionContext, next: CallHandler) {
     }
     req.uploads = result;
 
-  // Single file  ✅ this is your case
+  
   } else if (req.file) {
     const file = req.file;
     const halfMB = 500000;
@@ -37,7 +37,7 @@ async intercept(context: ExecutionContext, next: CallHandler) {
     const filePath = `${model}/${crypto.randomUUID()}.${mime}`;
     await this.awsService.uploadfile(filePath, file.buffer, file.mimetype);
     file.s3Path = filePath;
-    req.uploads = file;  // single file, not array
+    req.uploads = file;  
 
   } else {
     throw new BadRequestException('No file uploaded');
