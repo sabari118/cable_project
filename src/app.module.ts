@@ -11,6 +11,7 @@ import { AiModule } from './ai/ai.module';
 import { AttachementModule } from './attachement/attachement.module';
 import { EmbeddingModule } from './embedding/embedding.module';
 import { ChannelModule } from './channel/channel.module';
+import { ComplainModule } from './complain/complain.module';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { ChannelModule } from './channel/channel.module';
       serveRoot: '/',
     }),
     AuthModule, OrderModule, RazorpayModule, AddressModule, AiModule,
-    AttachementModule, EmbeddingModule, ChannelModule,
+    AttachementModule, EmbeddingModule, ChannelModule, ComplainModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -211,7 +211,6 @@ export class AiService {
       let user;
       try {
         user = await this.prisma.user.findUnique({ where: { user_id } });
-      console.log(user)
       } catch (error) {
         console.error('DB error fetching user:', error);
         return { reply: 'Something went wrong on our end. Please try again.' };
