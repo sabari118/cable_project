@@ -43,7 +43,7 @@ export class OrderService {
   async verifyPayment(dto: VerifyPaymentDto, user: UserDto) {
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = dto;
 
-  // Recreate the signature using the same method Razorpay uses
+ 
   const generated_signature = crypto
     .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET || '')
     .update(`${razorpay_order_id}|${razorpay_payment_id}`)
