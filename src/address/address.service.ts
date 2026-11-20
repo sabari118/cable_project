@@ -10,9 +10,9 @@ export class AddressService {
   async create(createAddressDto: CreateAddressDto,user:UserDto) {
     const finduser=await this.prisma.user.findFirst({where:{user_id:user.user_id},include:{address:true}})
 
-    if(!finduser){
-      throw new BadRequestException("user already exists")
-    }
+    if (finduser?.address) {
+  throw new BadRequestException("user already has address")
+}
 
     // const attachemant=await this.prisma.attachemant.findMany({where:{attachemant_id:{in:createAddressDto.attachemant_id}}})
 
